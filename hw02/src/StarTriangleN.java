@@ -4,7 +4,15 @@ public class StarTriangleN {
      * The first row contains 1 star, the second 2 stars, and so on. 
      */
    public static void starTriangle(int N) {
-      // TODO: Fill in this function
+      for (int i = 1; i <= N; i++) {
+         for (int s = 0; s < N - i; s++) {
+            System.out.print(" ");
+         }
+         for (int j = 0; j < i; j++) {
+            System.out.print("*");
+         }
+         System.out.println();
+      }
    }
    
    public static void main(String[] args) {
