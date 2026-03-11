@@ -42,8 +42,10 @@ public class IntList {
      * This method is non-destructive, i.e. it must not modify the original list.
      */
     public static IntList incrRecursiveNondestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        if (L == null){
+            return null;
+        }
+        return new IntList(L.first + x, incrRecursiveNondestructive(L.rest, x));
     }
 
     /**
@@ -52,8 +54,12 @@ public class IntList {
      * You are not allowed to use "new" in this method.
      */
     public static IntList incrRecursiveDestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        if (L == null){
+            return null;
+        }
+        L.first += x;
+        incrIterativeDestructive(L.rest, x);
+        return L;
     }
 
     /**
@@ -62,8 +68,19 @@ public class IntList {
      * to use recursion. May not modify the original list.
      */
     public static IntList incrIterativeNondestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        if (L == null) {
+            return null;
+        }
+
+        IntList result = new IntList(L.first + x, null);
+        IntList tail = result;
+        IntList current = L.rest;
+        while (current != null) {
+            tail.rest = new IntList(current.first + x, null);
+            tail = tail.rest;
+            current = current.rest;
+        }
+        return result;
     }
 
     /**
@@ -73,8 +90,16 @@ public class IntList {
      * You are not allowed to use "new" in this method.
      */
     public static IntList incrIterativeDestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        if (L == null){
+            return null;
+        }
+        L.first += x;
+        IntList tail = L.rest;
+        while (tail != null){
+            tail.first += x;
+            tail = tail.rest;
+        }
+        return L;
     }
 
     /**
@@ -82,8 +107,10 @@ public class IntList {
      * elements of L2.
      */
     public static IntList concatenate(IntList L1, IntList L2) {
-        // TODO: Fill in this code
-        return null;
+        if (L1 == null){
+            return L2;
+        }
+        return new IntList(L1.first, concatenate(L1.rest, L2));
     }
 
     /*
